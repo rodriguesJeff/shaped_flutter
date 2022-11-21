@@ -1,7 +1,11 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shaped_flutter/src/cubit/home/home_cubit.dart';
 import 'package:shaped_flutter/src/cubit/login/login_cubit.dart';
+import 'package:shaped_flutter/src/pages/home/home_page.dart';
 import 'package:shaped_flutter/src/pages/login/widgets/text_field_widget.dart';
 
 class LoginPage extends StatefulWidget {
@@ -14,6 +18,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
+    // ignore: no_leading_underscores_for_local_identifiers
     final _cubit = context.read<LoginCubit>();
     return Scaffold(
       backgroundColor: Colors.blueGrey,
@@ -51,7 +56,15 @@ class _LoginPageState extends State<LoginPage> {
                     if (_cubit.isFormValid) {
                       final result = await _cubit.login();
                       if (result == true) {
-                        print(true);
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BlocProvider.value(
+                              value: HomeCubit(),
+                              child: const HomePage(),
+                            ),
+                          ),
+                        );
                       }
                     }
                   },

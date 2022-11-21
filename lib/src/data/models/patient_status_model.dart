@@ -12,13 +12,4 @@ class PatientStatusModel {
     status = json['status'];
     data = json['data'];
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['paciente'] = this.paciente;
-    data['status'] = this.status;
-    data['data'] = this.data;
-    return data;
-  }
 }
