@@ -1,0 +1,20 @@
+{
+	"resultados": {
+		"exames": [{
+			"id": 1,
+			"paciente": "João Pedro",
+			"status": "Processando",
+			"data": "08/08/2022"
+		}, {
+			"id": 2,
+			"paciente": "Marcelo Miguel",
+			"status": "Finalizado",
+			"data": "09/08/2022"
+		}, {
+			"id": 3,
+			"paciente": "Marcos Pontes",
+			"status": "Processando",
+			"data": "05/08/2022"
+		}]
+	}
+}
