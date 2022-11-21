@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shaped_flutter/src/cubit/login/login_cubit.dart';
+import 'package:shaped_flutter/src/pages/login/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,9 +15,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.grey,
       ),
-      home: Container(),
+      home: BlocProvider.value(
+        value: LoginCubit(),
+        child: const LoginPage(),
+      ),
     );
   }
 }
