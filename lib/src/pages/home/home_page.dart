@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shaped_flutter/src/cubit/home/home_cubit.dart';
+import 'package:shaped_flutter/src/cubit/login/login_cubit.dart';
+import 'package:shaped_flutter/src/pages/login/login_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -15,9 +17,24 @@ class _HomePageState extends State<HomePage> {
     final _cubit = context.read<HomeCubit>();
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blueGrey,
         elevation: 0,
         title: const Text('Bem-Vindo ao Shaped'),
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () => Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                  builder: (c) => BlocProvider.value(
+                    value: LoginCubit(),
+                    child: const LoginPage(),
+                  ),
+                ),
+                (route) => false),
+            icon: const Icon(Icons.exit_to_app),
+          )
+        ],
       ),
       body: BlocBuilder<HomeCubit, HomeState>(builder: (context, state) {
         if (state is HomeInitial) _cubit.getPatientStatusModel();
